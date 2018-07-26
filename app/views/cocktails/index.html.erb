@@ -1,0 +1,45 @@
+
+
+<div class="container">
+  <h2>Here is your Cocktail List!</h2>
+   <button type="button" class="btn btn-primary btn-sm"><%= link_to "Add", new_cocktail_path %></button>
+  <% @cocktails.each do |c| %>
+    <div class="row">
+      <div class="col-xm-12 col-md-12 col-lg-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= "#{c.name}" %>
+            <div class="buttons">
+              <button type="button" class="btn btn-primary btn-sm"><%= link_to "Details", cocktail_path(c) %></button>
+              <button type="button" class="btn btn-primary btn-sm"><%= link_to "Delete", cocktail_path(c), method: :delete %></button>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <%end%>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+  <% @cocktails.each do |c| %>
+      <div class="col-xs-12 col-sm-4">
+        <a class="card-link" href= "<%= cocktail_path(c) %>" >
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path c.photo, height: 175, width: 300, crop: :fill %>')" >
+
+            <div class="card-description">
+              <h2><%= "#{c.name}" %></h2>
+            </div>
+            <div class="buttons" style = "position: absolute; bottom:10px; right:10px">
+               <button type="button" class="btn btn-primary btn-sm"><%= link_to "Details", cocktail_path(c) %></button>
+            </div>
+          </div>
+        </a>
+      </div>
+    <%end%>
+  </div>
+</div>
